@@ -232,18 +232,23 @@ header{
   gap:18px;
 }
 .features-grid,.info-grid,.testimonial-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.article-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:4rem}
 .tips-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .campaign-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .contact-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 
-.feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block{
+.feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block,.article-card{
   background:linear-gradient(180deg,rgba(19,34,49,.95),rgba(12,24,35,.98));
   border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
 }
-.feature-card,.info-card,.testimonial,.seo-block{padding:26px}
-.feature-card h3,.info-card h3,.campaign-card-text h4,.tip-card-text h4,.contact-card h4{color:#fff}
-.feature-card p,.info-card p,.testimonial p,.campaign-card-text p,.tip-card-text p,.contact-card p{color:var(--text-muted)}
+.feature-card,.info-card,.testimonial,.seo-block,.article-card{padding:26px}
+.feature-card h3,.info-card h3,.campaign-card-text h4,.tip-card-text h4,.contact-card h4,.article-card h3{color:#fff}
+.feature-card p,.info-card p,.testimonial p,.campaign-card-text p,.tip-card-text p,.contact-card p,.article-card p{color:var(--text-muted)}
+.article-card{text-decoration:none;transition:transform .22s,border-color .22s}
+.article-card:hover{transform:translateY(-4px);border-color:rgba(123,200,164,.32)}
+.article-tag{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
+.article-link{display:inline-block;margin-top:14px;color:#e6f5f7;font-size:.84rem;font-weight:700}
 
 .feature-eyebrow{
   color:#b9dadd;
@@ -384,6 +389,7 @@ footer{
   </div>
   <nav class="header-nav">
     <a href="#guia">Guia</a>
+    <a href="#paginas">Paginas</a>
     <a href="#comparativo">Comparativo</a>
     <a href="#arquivo">Arquivo visual</a>
     <a href="#dicas">Dicas</a>
@@ -445,6 +451,39 @@ footer{
       <div class="stat-label">Projeto feito em Portugal para contexto portugues</div>
     </div>
   </div>
+
+  <section id="paginas">
+    <p class="section-label">Paginas novas</p>
+    <h2 class="section-title">Guias internos para dar profundidade ao projeto</h2>
+    <p class="section-sub">Em vez de concentrar tudo na homepage, estas paginas organizam os temas que mais interessam a quem procura melhorar resultados no TVDE em Portugal.</p>
+
+    <div class="article-grid">
+      <a class="article-card" href="filtros-tvde-portugal.html">
+        <span class="article-tag">Filtros</span>
+        <h3>Filtros TVDE em Portugal</h3>
+        <p>Um guia para pensar valor por hora, distancia de recolha, euros por km e regras por horario sem cair em configuracoes aleatorias.</p>
+        <span class="article-link">Abrir guia</span>
+      </a>
+      <a class="article-card" href="escolher-corridas-tvde.html">
+        <span class="article-tag">Escolha de corridas</span>
+        <h3>Como escolher melhores corridas</h3>
+        <p>Leitura pratica para decidir com mais criterio, reduzir km improdutivos e evitar turnos que parecem bons mas rendem pouco.</p>
+        <span class="article-link">Abrir guia</span>
+      </a>
+      <a class="article-card" href="produtividade-tvde-portugal.html">
+        <span class="article-tag">Produtividade</span>
+        <h3>Produtividade real no TVDE</h3>
+        <p>Uma pagina sobre ritmo de turno, janelas horarias, aeroportos, pausas e consistencia semanal em vez de euforia de um dia isolado.</p>
+        <span class="article-link">Abrir guia</span>
+      </a>
+      <a class="article-card" href="ferramentas-tvde-independentes.html">
+        <span class="article-tag">Ferramentas</span>
+        <h3>Ferramentas para motoristas TVDE</h3>
+        <p>Leitura independente sobre apps, automatismos e o papel de ferramentas como a Mystro no trabalho diario do motorista.</p>
+        <span class="article-link">Abrir guia</span>
+      </a>
+    </div>
+  </section>
 
   <section id="guia">
     <p class="section-label">Guia pratico</p>
@@ -740,6 +779,7 @@ footer{
   <div class="footer-brand">TVDE Mais Portugal</div>
   <div class="footer-links">
     <a href="#guia">Guia</a>
+    <a href="#paginas">Paginas</a>
     <a href="#comparativo">Comparativo</a>
     <a href="#arquivo">Arquivo visual</a>
     <a href="#dicas">Dicas</a>
