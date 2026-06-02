@@ -1,0 +1,90 @@
+name: Update Facebook Feed
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.FACEBOOK_PAGE_ID != '' && secrets.FACEBOOK_PAGE_ACCESS_TOKEN != '' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch Facebook posts
+        env:
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from datetime import datetime, timezone
+
+          page_id = os.environ["FACEBOOK_PAGE_ID"]
+          token = os.environ["FACEBOOK_PAGE_ACCESS_TOKEN"]
+          fields = "message,permalink_url,created_time,full_picture"
+          params = urllib.parse.urlencode(
+              {
+                  "fields": fields,
+                  "limit": "6",
+                  "access_token": token,
+              }
+          )
+          url = f"https://graph.facebook.com/v23.0/{page_id}/posts?{params}"
+
+          with urllib.request.urlopen(url) as response:
+              payload = json.load(response)
+
+          posts = []
+          for item in payload.get("data", []):
+              message = (item.get("message") or "").strip()
+              trimmed = message[:220].strip()
+              if len(message) > 220:
+                  trimmed += "..."
+              posts.append(
+                  {
+                      "title": trimmed[:72] if trimmed else "Publicacao Facebook",
+                      "message": trimmed or "Publicacao sem texto disponivel.",
+                      "created_time": item.get("created_time", ""),
+                      "permalink_url": item.get("permalink_url", ""),
+                      "image": item.get("full_picture", ""),
+                  }
+              )
+
+          output = {
+              "source": "facebook-page-api",
+              "page_url": f"https://www.facebook.com/{page_id}",
+              "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+              "posts": posts,
+          }
+
+          with open("facebook-feed.json", "w", encoding="utf-8") as handle:
+              json.dump(output, handle, ensure_ascii=False, indent=2)
+              handle.write("\n")
+          PY
+
+      - name: Commit updated feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add facebook-feed.json
+          if git diff --cached --quiet; then
+            echo "No feed changes to commit."
+            exit 0
+          fi
+          git commit -m "Atualizar feed do Facebook"
+          git push

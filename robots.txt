@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moonlab1976.github.io/mystro-tvde/sitemap.xml
