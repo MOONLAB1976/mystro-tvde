@@ -220,6 +220,27 @@ header{
 .resource-card span{display:block;color:var(--text-muted);font-size:.84rem}
 
 .container{max-width:1120px;margin:0 auto;padding:0 2rem 4rem}
+.tabs-strip{
+  max-width:1120px;
+  margin:0 auto 2.2rem;
+  padding:0 2rem;
+}
+.tabs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+.tab-link{
+  text-decoration:none;
+  padding:16px 18px;
+  border-radius:16px;
+  background:linear-gradient(180deg,rgba(19,34,49,.95),rgba(12,24,35,.98));
+  border:1px solid rgba(255,255,255,.08);
+  transition:transform .22s,border-color .22s;
+}
+.tab-link:hover{transform:translateY(-4px);border-color:rgba(123,200,164,.32)}
+.tab-link strong{display:block;color:#fff;margin-bottom:6px}
+.tab-link span{display:block;color:var(--text-muted);font-size:.84rem}
 
 .section-label{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#b9dadd;margin-bottom:8px;font-weight:700}
 .section-title{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:750;margin-bottom:10px}
@@ -263,15 +284,16 @@ header{
 .trust-grid,.journey-grid,.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:4rem}
 .facebook-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:22px;align-items:start}
 .facebook-feed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:22px}
+.steps-grid,.profit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:4rem}
 
-.feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card{
+.feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card,.step-card,.profit-card,.video-panel{
   background:linear-gradient(180deg,rgba(19,34,49,.95),rgba(12,24,35,.98));
   border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
 }
-.feature-card,.info-card,.testimonial,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card{padding:26px}
-.feature-card h3,.info-card h3,.campaign-card-text h4,.tip-card-text h4,.contact-card h4,.article-card h3,.trust-card h3,.journey-card h3,.proof-card h3{color:#fff}
-.feature-card p,.info-card p,.testimonial p,.campaign-card-text p,.tip-card-text p,.contact-card p,.article-card p,.trust-card p,.journey-card p,.proof-card p{color:var(--text-muted)}
+.feature-card,.info-card,.testimonial,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card,.step-card,.profit-card,.video-panel{padding:26px}
+.feature-card h3,.info-card h3,.campaign-card-text h4,.tip-card-text h4,.contact-card h4,.article-card h3,.trust-card h3,.journey-card h3,.proof-card h3,.step-card h3,.profit-card h3,.video-panel h3{color:#fff}
+.feature-card p,.info-card p,.testimonial p,.campaign-card-text p,.tip-card-text p,.contact-card p,.article-card p,.trust-card p,.journey-card p,.proof-card p,.step-card p,.profit-card p,.video-panel p{color:var(--text-muted)}
 .article-card{text-decoration:none;transition:transform .22s,border-color .22s}
 .article-card:hover{transform:translateY(-4px);border-color:rgba(123,200,164,.32)}
 .article-tag{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
@@ -285,6 +307,10 @@ header{
 .author-role{color:#c8d7de;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
 .mini-note{margin-top:14px;font-size:.84rem;color:#bdcbd3}
 .proof-kicker{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
+.step-number{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:rgba(123,200,164,.14);border:1px solid rgba(123,200,164,.24);color:#e6f7ee;font-weight:800;margin-bottom:14px}
+.video-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.9fr);gap:20px;align-items:start}
+.video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#0d1722}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .quick-filter{margin-bottom:4rem;padding:30px;background:linear-gradient(135deg,rgba(245,124,0,.16),rgba(19,34,49,.96));border:1px solid rgba(255,255,255,.08);border-radius:18px}
 .quick-filter-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);gap:22px;align-items:start}
 .quick-filter h3{font-size:clamp(1.4rem,3vw,2rem);line-height:1.15;margin-bottom:12px}
@@ -428,14 +454,14 @@ footer{
 .tip-modal img{max-width:92vw;max-height:92vh;border-radius:14px}
 
 @media(max-width:900px){
-  .hero-wrap,.campaign-highlight,.facebook-grid,.quick-filter-grid{grid-template-columns:1fr}
+  .hero-wrap,.campaign-highlight,.facebook-grid,.quick-filter-grid,.video-layout{grid-template-columns:1fr}
 }
 @media(max-width:680px){
   header{padding:1rem 1.2rem;flex-direction:column;align-items:flex-start;gap:12px}
   .header-nav{gap:14px}
   .hero{padding:3.2rem 1.2rem 2.2rem}
   .hero-main,.hero-side,.compare-header,.cta-section,.seo-block,.feature-card,.info-card,.testimonial{padding:22px}
-  .container{padding:0 1.2rem 3rem}
+  .container,.tabs-strip{padding:0 1.2rem 3rem}
   .compare-table th,.compare-table td{padding:11px 12px;font-size:.82rem}
 }
 </style>
@@ -500,6 +526,31 @@ footer{
   </div>
 </section>
 
+<div class="tabs-strip">
+  <div class="tabs-grid">
+    <a class="tab-link" href="#como-funciona">
+      <strong>Como funciona</strong>
+      <span>Ver em 3 passos como a app encaixa no turno.</span>
+    </a>
+    <a class="tab-link" href="#lucro-real">
+      <strong>Lucro real</strong>
+      <span>Perceber onde a app pode melhorar o resultado.</span>
+    </a>
+    <a class="tab-link" href="filtros-tvde-portugal.html">
+      <strong>Filtros</strong>
+      <span>Guia completo e filtro do Porto pronto a importar.</span>
+    </a>
+    <a class="tab-link" href="#video-demo">
+      <strong>Ver a app</strong>
+      <span>Video demonstrativo com a Mystro a trabalhar.</span>
+    </a>
+    <a class="tab-link" href="#contacto">
+      <strong>Falar comigo</strong>
+      <span>WhatsApp, grupo, Facebook e YouTube.</span>
+    </a>
+  </div>
+</div>
+
 <div class="container">
 
   <div class="stats-grid">
@@ -528,6 +579,75 @@ footer{
       <div class="stat-label">Contador publico de visitas para acompanhar a tracao do site</div>
     </div>
   </div>
+
+  <section>
+    <p class="section-label">A realidade</p>
+    <h2 class="section-title">Muitos motoristas aceitam corridas sem saber se aquilo melhora mesmo o dia.</h2>
+    <p class="section-sub">O problema raramente e falta de vontade de trabalhar. O problema e a decisao ter de ser tomada em segundos, com pouca margem para calcular, comparar e manter criterio consistente ao longo do turno.</p>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <span class="proof-kicker">Pressao</span>
+        <h3>Decidir depressa cria erros caros</h3>
+        <p>Quando a proposta aparece e o tempo aperta, e facil aceitar viagens que parecem boas mas estragam a hora seguinte, aumentam quilometros mortos e baixam a margem do turno.</p>
+      </div>
+      <div class="proof-card">
+        <span class="proof-kicker">Caos</span>
+        <h3>Sem regras, o turno vira reacção</h3>
+        <p>Se cada aceite depende do humor do momento, o motorista perde consistencia. O desgaste aumenta, o foco baixa e o resultado final fica mais dependente de sorte do que de metodo.</p>
+      </div>
+      <div class="proof-card">
+        <span class="proof-kicker">Oportunidade</span>
+        <h3>A app vale mais quando cria disciplina</h3>
+        <p>O interesse real da Mystro nao e fazer magia. E ajudar a transformar um bom criterio em rotina mais limpa, mais repetivel e mais facil de executar no terreno.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="lucro-real">
+    <p class="section-label">Lucro real</p>
+    <h2 class="section-title">Lucro real, nao ficticio.</h2>
+    <p class="section-sub">Nao interessa parecer ocupado. Interessa trabalhar com mais retorno por hora, menos viagens fracas e menos quilometros que nao deixam margem. E aqui que a app tem de se provar.</p>
+
+    <div class="profit-grid">
+      <div class="profit-card">
+        <h3>Menos viagens que so ocupam tempo</h3>
+        <p>Ao usar filtros, leitura de propostas e automatismos com criterio, fica mais facil recusar o que apenas enche o turno sem proteger rendimento.</p>
+      </div>
+      <div class="profit-card">
+        <h3>Mais consistencia no resultado</h3>
+        <p>O objetivo nao e uma corrida espectacular isolada. E aumentar a probabilidade de ter dias e semanas mais equilibrados, com menos variacao causada por aceites impulsivos.</p>
+      </div>
+      <div class="profit-card">
+        <h3>Mais foco no que compensa</h3>
+        <p>Quando a app ajuda a tornar visivel o que compensa mais, o motorista ganha margem para trabalhar com mais tranquilidade e menos ruido mental.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <p class="section-label">Como funciona</p>
+    <h2 class="section-title">A funcionar com logica simples e sem complicar o teu turno.</h2>
+    <p class="section-sub">Em vez de vender mistica, o melhor e mostrar o fluxo pratico: instalar, definir regras e testar em trabalho real.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Instalas e defines o ponto de partida</h3>
+        <p>Comecas pela app oficial e, se quiseres poupar tempo, importas um filtro pronto como o do Porto para nao começares do zero.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Ajustas os teus limites minimos</h3>
+        <p>Valor por hora, euros por km, recolha e destino passam a ter uma regra base. A app vale mais quando estas regras refletem a tua realidade e nao apenas entusiasmo.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Testas no terreno e comparas</h3>
+        <p>O mais importante e observar o antes e depois: menos quilometros sem retorno, menos viagens fracas e mais disciplina nas horas em que normalmente perdes margem.</p>
+      </div>
+    </div>
+  </section>
 
   <section>
     <p class="section-label">Porque testar</p>
@@ -1006,6 +1126,30 @@ footer{
     <p class="section-sub" style="margin-bottom:18px">Esta secao fica pronta para mostrar as publicacoes mais recentes da pagina de Facebook assim que a integracao API estiver ativa no repositorio.</p>
     <p class="facebook-status" id="facebookFeedStatus">A carregar publicacoes...</p>
     <div class="facebook-feed-grid" id="facebookFeedGrid"></div>
+  </section>
+
+  <section id="video-demo" class="video-panel">
+    <p class="section-label">Video</p>
+    <h2 class="section-title">Ver a Mystro a trabalhar no terreno</h2>
+    <p class="section-sub">Se preferes ver a app em contexto real antes de testar, este bloco aponta para o video demonstrativo que mostra a Mystro Drive em funcionamento.</p>
+    <div class="video-layout">
+      <div class="video-frame">
+        <iframe
+          title="Video demonstrativo da Mystro Drive"
+          src="https://www.youtube.com/embed/fwwcIxy2f6I"
+          allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+      <div>
+        <h3>O que deves observar neste video</h3>
+        <p>Repara em como a app encaixa no fluxo do motorista, como reduz o esforço mental de leitura e como transforma regras em acao mais consistente. O valor do video nao e ser bonito; e mostrar a operacao mais clara no dia a dia.</p>
+        <div class="cta-actions">
+          <a href="https://youtu.be/fwwcIxy2f6I" target="_blank" class="btn-hero btn-primary">Abrir video no YouTube</a>
+          <a href="https://www.youtube.com/@MystroPortugalTVDE" target="_blank" class="btn-hero btn-secondary">Ver mais no YouTube</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="contacto">
