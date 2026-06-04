@@ -58,6 +58,12 @@ h1{font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.06;max-width:860px;margin-bo
 .image-card{overflow:hidden}
 .image-card img{width:100%;display:block}
 .image-card div{padding:14px 16px;color:var(--muted);font-size:.84rem}
+.import-card{margin:22px 0;padding:22px;border-radius:16px;background:linear-gradient(135deg,rgba(245,124,0,.14),rgba(19,34,49,.95));border:1px solid rgba(255,255,255,.08)}
+.import-card h2{font-size:1.45rem;margin-bottom:12px}
+.import-card p{color:var(--muted);margin-bottom:14px}
+.import-list{display:grid;gap:10px;margin:14px 0 18px}
+.import-list div{display:flex;gap:10px;align-items:flex-start}
+.import-list span:last-child{color:#d7e0e5}
 footer{padding:2.4rem 2rem 3rem;border-top:1px solid rgba(255,255,255,.06);text-align:center;color:#8495a1}
 footer a{text-decoration:none;color:#d7e5e8}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
@@ -96,6 +102,19 @@ footer a{text-decoration:none;color:#d7e5e8}
 <div class="wrap">
   <div class="grid">
     <main>
+      <article class="import-card">
+        <h2>Filtro do Porto ja pronto a importar</h2>
+        <p>Se nao queres perder tempo a criar um filtro do zero, ja existe um filtro preparado para a zona do Porto que pode servir como base imediata para começar a testar a app com mais criterio.</p>
+        <div class="import-list">
+          <div><span class="dot"></span><span>Destino dentro da Grande Area do Porto.</span></div>
+          <div><span class="dot"></span><span>Minimo de 13 euros por hora.</span></div>
+          <div><span class="dot"></span><span>Minimo de 0,50 euros por km.</span></div>
+          <div><span class="dot"></span><span>Configuracao pronta a importar.</span></div>
+        </div>
+        <a class="btn primary" href="https://myst.ro/?filter=a171ad3b-0b6b-4d6c-a349-a2728abd5a0a" target="_blank">Importar filtro Porto</a>
+        <p style="margin-top:14px">Nao significa que seja o filtro perfeito para toda a gente. O ideal e importar, testar durante alguns dias e depois ajustar conforme o carro, os custos e a tua forma de trabalhar.</p>
+      </article>
+
       <article class="card">
         <h2>1. O filtro mais importante raramente e o valor bruto da corrida</h2>
         <p>Muitos motoristas olham para a corrida e veem apenas o valor total. Esse reflexo engana. Uma viagem com bom valor bruto pode esconder uma recolha longa, uma zona fraca na descarga ou um tempo morto enorme ate aparecer a proxima oportunidade.</p>

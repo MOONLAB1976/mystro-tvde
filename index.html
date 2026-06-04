@@ -285,6 +285,21 @@ header{
 .author-role{color:#c8d7de;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
 .mini-note{margin-top:14px;font-size:.84rem;color:#bdcbd3}
 .proof-kicker{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
+.quick-filter{margin-bottom:4rem;padding:30px;background:linear-gradient(135deg,rgba(245,124,0,.16),rgba(19,34,49,.96));border:1px solid rgba(255,255,255,.08);border-radius:18px}
+.quick-filter-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);gap:22px;align-items:start}
+.quick-filter h3{font-size:clamp(1.4rem,3vw,2rem);line-height:1.15;margin-bottom:12px}
+.quick-filter p{color:var(--text-muted)}
+.quick-filter-list{display:grid;gap:10px;margin:18px 0}
+.quick-filter-list div{display:flex;gap:10px;align-items:flex-start;color:#d7e0e5;font-size:.92rem}
+.quick-filter-side{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px}
+.quick-filter-side strong{display:block;color:#fff;margin-bottom:8px}
+.quick-filter-note{font-size:.84rem;color:#c3d0d7;margin-top:12px}
+.quick-filter-side img,.visual-card img{width:100%;display:block;border-radius:14px}
+.quick-filter-caption,.visual-card figcaption{color:var(--text-muted);font-size:.82rem;line-height:1.55}
+.quick-filter-caption{margin-top:12px}
+.visual-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-bottom:4rem}
+.visual-card{background:linear-gradient(180deg,rgba(19,34,49,.95),rgba(12,24,35,.98));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
+.visual-card strong{display:block;color:#fff;margin:12px 0 8px}
 
 .feature-eyebrow{
   color:#b9dadd;
@@ -413,7 +428,7 @@ footer{
 .tip-modal img{max-width:92vw;max-height:92vh;border-radius:14px}
 
 @media(max-width:900px){
-  .hero-wrap,.campaign-highlight,.facebook-grid{grid-template-columns:1fr}
+  .hero-wrap,.campaign-highlight,.facebook-grid,.quick-filter-grid{grid-template-columns:1fr}
 }
 @media(max-width:680px){
   header{padding:1rem 1.2rem;flex-direction:column;align-items:flex-start;gap:12px}
@@ -631,6 +646,62 @@ footer{
         <p>Leitura independente sobre apps, automatismos e o papel de ferramentas como a Mystro no trabalho diario do motorista.</p>
         <span class="article-link">Abrir guia</span>
       </a>
+    </div>
+  </section>
+
+  <section class="quick-filter">
+    <p class="section-label">Filtro pronto</p>
+    <div class="quick-filter-grid">
+      <div>
+        <h3>Ja tens um filtro do Porto pronto a aplicar sem perder tempo a configurar tudo de raiz.</h3>
+        <p>Para quem quer começar a testar a app com regras minimamente pensadas, este filtro serve como ponto de partida rápido. Nao significa que seja perfeito para todos os motoristas, mas ajuda a entrar logo com um criterio base mais disciplinado.</p>
+        <div class="quick-filter-list">
+          <div><span class="campaign-dot"></span><span>Destino dentro da Grande Area do Porto.</span></div>
+          <div><span class="campaign-dot"></span><span>Minimo de 13 euros por hora.</span></div>
+          <div><span class="campaign-dot"></span><span>Minimo de 0,50 euros por km.</span></div>
+          <div><span class="campaign-dot"></span><span>Configuracao pronta a importar para a app.</span></div>
+        </div>
+        <div class="cta-actions">
+          <a href="https://myst.ro/?filter=a171ad3b-0b6b-4d6c-a349-a2728abd5a0a" target="_blank" class="btn-hero btn-primary">Importar filtro Porto</a>
+          <a href="filtros-tvde-portugal.html" class="btn-hero btn-secondary">Perceber como funciona</a>
+        </div>
+      </div>
+      <div class="quick-filter-side">
+        <strong>Para quem este filtro faz mais sentido</strong>
+        <img src="images/campanha-filtra-mais-rapido.jpeg" alt="Imagem promocional sobre filtro pronto para motoristas TVDE no Porto" loading="lazy">
+        <p class="quick-filter-caption">Exemplo visual de filtro TVDE pronto a importar para o Porto, pensado para ajudar a evitar viagens fracas e melhorar o rendimento por hora.</p>
+        <p>Motoristas que querem começar a filtrar melhor viagens no Porto sem passar horas a criar regras do zero.</p>
+        <p class="quick-filter-note">O melhor uso deste filtro e simples: importar, testar durante alguns dias e depois ajustar valores conforme custos, carro, horarios e forma de trabalhar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Exemplos visuais</p>
+    <h2 class="section-title">Imagens que ajudam a perceber mais depressa como a app pode ser usada no terreno</h2>
+    <p class="section-sub">Estas imagens estao espalhadas ao longo do site para reforcar os temas principais: filtros TVDE, aceites automaticos, reservas automaticas e melhoria do rendimento no Porto e noutras zonas de trabalho.</p>
+
+    <div class="visual-grid">
+      <figure class="visual-card">
+        <img src="images/campanha-reservas-automaticas.jpeg" alt="Reservas automaticas na app Mystro para motoristas TVDE em Portugal" loading="lazy">
+        <strong>Reservas automaticas</strong>
+        <figcaption>Imagem sobre reservas automaticas na app Mystro, util para explicar como alguns motoristas TVDE usam automatismos para proteger tempo e reduzir falhas na gestao do turno.</figcaption>
+      </figure>
+      <figure class="visual-card">
+        <img src="images/campanha-auto-aceita-por-ti.jpeg" alt="Aceites automaticos na app Mystro para filtrar viagens TVDE" loading="lazy">
+        <strong>Aceites automaticos com criterio</strong>
+        <figcaption>Exemplo visual sobre aceites automaticos e configuracao de regras na app, com foco em viagens mais compensadoras e menos desgaste para motoristas TVDE.</figcaption>
+      </figure>
+      <figure class="visual-card">
+        <img src="images/campanha-escolher-viagens.jpeg" alt="Escolher melhores viagens TVDE com apoio da app Mystro" loading="lazy">
+        <strong>Escolher viagens com mais disciplina</strong>
+        <figcaption>Imagem usada para ilustrar a ideia de escolher melhores viagens no TVDE, reduzindo impulsos e aumentando o controlo sobre o tipo de corrida aceite.</figcaption>
+      </figure>
+      <figure class="visual-card">
+        <img src="images/campanha-mais-vinte-porcento.jpeg" alt="Melhorar rendimento por hora com filtros e app Mystro no TVDE" loading="lazy">
+        <strong>Mais rendimento por hora</strong>
+        <figcaption>Visual de apoio para discutir produtividade no TVDE, filtragem por valor e a possibilidade de melhorar o rendimento por hora com regras mais bem definidas.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -956,6 +1027,9 @@ footer{
         <a href="https://www.facebook.com/profile.php?id=61583011651853" target="_blank" class="contact-card">
           <div><h4>Facebook</h4><p>Canal complementar para acompanhar publicacoes e partilhas.</p></div>
         </a>
+        <a href="https://www.youtube.com/@MystroPortugalTVDE" target="_blank" class="contact-card">
+          <div><h4>YouTube</h4><p>Canal com videos e conteudo complementar para acompanhar o projeto.</p></div>
+        </a>
         <a href="https://mystrodriver.com/" target="_blank" class="contact-card">
           <div><h4>Site oficial da Mystro</h4><p>Ligacao externa apenas para quem procura a marca oficial.</p></div>
         </a>
@@ -974,6 +1048,7 @@ footer{
     <a href="#arquivo">Arquivo visual</a>
     <a href="#dicas">Dicas</a>
     <a href="https://chat.whatsapp.com/EQHzSbxbDfw8sA54MfxQFR?s=sw&p=a&mlu=2" target="_blank">Grupo WhatsApp</a>
+    <a href="https://www.youtube.com/@MystroPortugalTVDE" target="_blank">YouTube</a>
     <a href="https://wa.me/351937862685" target="_blank">WhatsApp</a>
   </div>
   <p class="footer-copy">Projeto independente criado em Portugal por um utilizador. Este site nao e oficial, nao representa a Mystro e nao substitui os canais oficiais da empresa. O objetivo desta pagina e partilhar experiencia pratica, guias e recursos uteis para motoristas TVDE.<br>&copy; 2026 TVDE Mais Portugal.</p>
