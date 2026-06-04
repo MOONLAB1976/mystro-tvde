@@ -218,15 +218,37 @@ header{
   margin-top:10px;
 }
 .resource-card{
-  display:block;
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr) 22px;
+  gap:14px;
+  align-items:center;
   text-decoration:none;
-  background:rgba(255,255,255,.03);
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
   border:1px solid rgba(255,255,255,.08);
   border-radius:14px;
   padding:16px;
+  transition:transform .22s,border-color .22s,background .22s;
 }
+.resource-card:hover{transform:translateY(-3px);border-color:rgba(255,122,0,.35);background:linear-gradient(180deg,rgba(255,122,0,.09),rgba(255,255,255,.03))}
 .resource-card strong{display:block;color:#fff;margin-bottom:4px}
 .resource-card span{display:block;color:var(--text-muted);font-size:.84rem}
+.resource-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.25rem;
+  background:linear-gradient(135deg,rgba(255,122,0,.2),rgba(255,122,0,.06));
+  border:1px solid rgba(255,122,0,.22);
+}
+.resource-copy{min-width:0}
+.resource-arrow{
+  color:#ffd9b3;
+  font-size:1.15rem;
+  justify-self:end;
+}
 
 .container{max-width:1120px;margin:0 auto;padding:0 2rem 4rem}
 .tabs-strip{
@@ -524,16 +546,28 @@ footer{
       <p>Quando bem usada, a aplicacao pode reduzir toques no telemovel, ajudar a manter regras de aceite mais consistentes e tornar o turno mais disciplinado. O teste deve ser feito com criterio e com objetivo claro.</p>
       <div class="resource-list">
         <a class="resource-card" href="https://apps.apple.com/us/app/mystro-driver-drive-deliver/id1524407919" target="_blank">
-          <strong>Testar no iPhone</strong>
-          <span>Ligacao oficial externa para descarregar a app na App Store</span>
+          <div class="resource-icon" aria-hidden="true">🍎</div>
+          <div class="resource-copy">
+            <strong>Testar no iPhone</strong>
+            <span>Ligacao oficial externa para descarregar a app na App Store</span>
+          </div>
+          <div class="resource-arrow" aria-hidden="true">↗</div>
         </a>
         <a class="resource-card" href="https://play.google.com/store/apps/details?id=com.mystrodriver" target="_blank">
-          <strong>Testar no Android</strong>
-          <span>Ligacao oficial externa para descarregar a app no Google Play</span>
+          <div class="resource-icon" aria-hidden="true">▶</div>
+          <div class="resource-copy">
+            <strong>Testar no Android</strong>
+            <span>Ligacao oficial externa para descarregar a app no Google Play</span>
+          </div>
+          <div class="resource-arrow" aria-hidden="true">↗</div>
         </a>
         <a class="resource-card" href="https://mystrodriver.com/" target="_blank">
-          <strong>Ver detalhes oficiais</strong>
-          <span>Ligacao externa para conhecer melhor a app e o enquadramento oficial</span>
+          <div class="resource-icon" aria-hidden="true">⚡</div>
+          <div class="resource-copy">
+            <strong>Ver detalhes oficiais</strong>
+            <span>Ligacao externa para conhecer melhor a app e o enquadramento oficial</span>
+          </div>
+          <div class="resource-arrow" aria-hidden="true">↗</div>
         </a>
       </div>
     </aside>
