@@ -248,6 +248,8 @@ header{
 }
 .stat-number{font-size:2.2rem;font-weight:800;color:#dff5ea;margin-bottom:5px}
 .stat-label{font-size:.83rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+.counter-badge{display:inline-flex;align-items:center;max-width:100%;margin-bottom:8px}
+.counter-badge img{max-width:100%;height:auto;display:block}
 
 .features-grid,.info-grid,.testimonial-grid,.tips-grid,.campaign-grid,.contact-grid{
   display:grid;
@@ -258,30 +260,31 @@ header{
 .tips-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .campaign-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .contact-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.trust-grid,.journey-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:4rem}
+.trust-grid,.journey-grid,.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:4rem}
 .facebook-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:22px;align-items:start}
 .facebook-feed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:22px}
 
-.feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card{
+.feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card{
   background:linear-gradient(180deg,rgba(19,34,49,.95),rgba(12,24,35,.98));
   border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
 }
-.feature-card,.info-card,.testimonial,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card{padding:26px}
-.feature-card h3,.info-card h3,.campaign-card-text h4,.tip-card-text h4,.contact-card h4,.article-card h3,.trust-card h3,.journey-card h3{color:#fff}
-.feature-card p,.info-card p,.testimonial p,.campaign-card-text p,.tip-card-text p,.contact-card p,.article-card p,.trust-card p,.journey-card p{color:var(--text-muted)}
+.feature-card,.info-card,.testimonial,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card{padding:26px}
+.feature-card h3,.info-card h3,.campaign-card-text h4,.tip-card-text h4,.contact-card h4,.article-card h3,.trust-card h3,.journey-card h3,.proof-card h3{color:#fff}
+.feature-card p,.info-card p,.testimonial p,.campaign-card-text p,.tip-card-text p,.contact-card p,.article-card p,.trust-card p,.journey-card p,.proof-card p{color:var(--text-muted)}
 .article-card{text-decoration:none;transition:transform .22s,border-color .22s}
 .article-card:hover{transform:translateY(-4px);border-color:rgba(123,200,164,.32)}
 .article-tag{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
 .article-link{display:inline-block;margin-top:14px;color:#e6f5f7;font-size:.84rem;font-weight:700}
 .journey-card{text-decoration:none;transition:transform .22s,border-color .22s}
-.journey-card:hover,.trust-card:hover{transform:translateY(-4px);border-color:rgba(123,200,164,.32)}
+.journey-card:hover,.trust-card:hover,.proof-card:hover{transform:translateY(-4px);border-color:rgba(123,200,164,.32)}
 .journey-step{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
 .trust-list{display:grid;gap:10px;margin-top:14px}
 .trust-list div{display:flex;gap:10px;align-items:flex-start;color:#d7e0e5;font-size:.92rem}
 .author-name{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:8px}
 .author-role{color:#c8d7de;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
 .mini-note{margin-top:14px;font-size:.84rem;color:#bdcbd3}
+.proof-kicker{display:inline-block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#d2ebed;margin-bottom:10px}
 
 .feature-eyebrow{
   color:#b9dadd;
@@ -447,10 +450,10 @@ footer{
   <div class="hero-wrap">
     <div class="hero-main">
       <div class="hero-kicker">Projeto comunitario para motoristas TVDE</div>
-      <h1>Experiencia real no terreno para ganhar melhor, filtrar melhor e escolher corridas com mais criterio.</h1>
-      <p>Este site foi criado em Portugal por um utilizador que acompanha o trabalho diario de motoristas TVDE. O foco aqui nao e representar marcas. O foco e partilhar criterios praticos, produtividade, filtros e leitura de corridas para ajudar quem trabalha com Uber e Bolt.</p>
+      <h1>Se queres trabalhar com mais criterio, menos desgaste e mais disciplina, esta app merece pelo menos um teste serio.</h1>
+      <p>O que mais chama atencao nesta aplicacao nao e uma promessa magica. E a capacidade de ajudar o motorista a automatizar regras, filtrar melhor corridas e trabalhar com mais foco quando a configuracao esta bem pensada. Aqui explicamos porque faz sentido testar a app no contexto real de Portugal.</p>
       <div class="hero-actions">
-        <a href="#comecar" class="btn-hero btn-primary">Comecar por aqui</a>
+        <a href="https://apps.apple.com/us/app/mystro-driver-drive-deliver/id1524407919" target="_blank" class="btn-hero btn-primary">Testar a app</a>
         <a href="https://wa.me/351937862685?text=Ola%2C%20vi%20o%20projeto%20TVDE%20Mais%20Portugal%20e%20quero%20tirar%20uma%20duvida." target="_blank" class="btn-hero btn-secondary">Falar no WhatsApp</a>
       </div>
       <div class="section-meta" style="margin-top:18px;margin-bottom:0">
@@ -462,20 +465,20 @@ footer{
     </div>
 
     <aside class="hero-side">
-      <h2>Links oficiais externos</h2>
-      <p>Se estiveres a procurar a aplicacao oficial da Mystro, usa apenas estes links externos. Aqui no site, o enquadramento e independente e educativo.</p>
+      <h2>Onde a app pode ajudar mesmo</h2>
+      <p>Quando bem usada, a aplicacao pode reduzir toques no telemovel, ajudar a manter regras de aceite mais consistentes e tornar o turno mais disciplinado. O teste deve ser feito com criterio e com objetivo claro.</p>
       <div class="resource-list">
         <a class="resource-card" href="https://apps.apple.com/us/app/mystro-driver-drive-deliver/id1524407919" target="_blank">
-          <strong>App Store</strong>
-          <span>Ligacao oficial externa para iPhone</span>
+          <strong>Testar no iPhone</strong>
+          <span>Ligacao oficial externa para descarregar a app na App Store</span>
         </a>
         <a class="resource-card" href="https://play.google.com/store/apps/details?id=com.mystrodriver" target="_blank">
-          <strong>Google Play</strong>
-          <span>Ligacao oficial externa para Android</span>
+          <strong>Testar no Android</strong>
+          <span>Ligacao oficial externa para descarregar a app no Google Play</span>
         </a>
         <a class="resource-card" href="https://mystrodriver.com/" target="_blank">
-          <strong>Site oficial da Mystro</strong>
-          <span>Ligacao externa apenas para consulta</span>
+          <strong>Ver detalhes oficiais</strong>
+          <span>Ligacao externa para conhecer melhor a app e o enquadramento oficial</span>
         </a>
       </div>
     </aside>
@@ -501,7 +504,39 @@ footer{
       <div class="stat-number">PT</div>
       <div class="stat-label">Projeto feito em Portugal para contexto portugues</div>
     </div>
+    <div class="stat-card">
+      <div class="counter-badge">
+        <a href="https://hits.sh/moonlab1976.github.io/mystro-tvde/" target="_blank">
+          <img alt="Contador de visitas" src="https://hits.sh/moonlab1976.github.io/mystro-tvde.svg?label=visitas&color=1f6f78&labelColor=102235">
+        </a>
+      </div>
+      <div class="stat-label">Contador publico de visitas para acompanhar a tracao do site</div>
+    </div>
   </div>
+
+  <section>
+    <p class="section-label">Porque testar</p>
+    <h2 class="section-title">O argumento mais forte a favor da app nao e a marca. E o ganho operacional.</h2>
+    <p class="section-sub">Quem fica convencido costuma ficar convencido por tres coisas: mais disciplina no aceite, menos atrito durante o turno e mais controlo sobre o tipo de corridas que entram.</p>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <span class="proof-kicker">Menos distracao</span>
+        <h3>Menos toques, mais foco a conduzir</h3>
+        <p>Para muitos motoristas, a primeira vantagem pratica e simples: reduzir a necessidade de mexer no telemovel em momentos de pressao. Isso pode tornar o trabalho mais limpo e menos cansativo.</p>
+      </div>
+      <div class="proof-card">
+        <span class="proof-kicker">Mais criterio</span>
+        <h3>Regras mais consistentes no aceite</h3>
+        <p>Quando ha filtros e automatismos bem pensados, a decisao deixa de ser tao emocional. Em vez de aceitar por impulso, o motorista passa a trabalhar com regras mais replicaveis.</p>
+      </div>
+      <div class="proof-card">
+        <span class="proof-kicker">Teste real</span>
+        <h3>Vale a pena testar no teu proprio turno</h3>
+        <p>A app nao substitui criterio, mas pode amplificar um bom metodo. Por isso o mais honesto e testar com objetivo claro: reduzir km improdutivos, melhorar a tua hora e tornar o turno mais previsivel.</p>
+      </div>
+    </div>
+  </section>
 
   <section>
     <p class="section-label">Credibilidade</p>
