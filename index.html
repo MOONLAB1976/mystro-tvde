@@ -316,6 +316,20 @@ header{
 .trust-grid,.journey-grid,.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:4rem}
 .facebook-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:22px;align-items:start}
 .facebook-feed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:22px}
+.news-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:20px;align-items:start;margin:20px 0 24px}
+.news-highlight{padding:24px;border-radius:18px;background:linear-gradient(135deg,rgba(245,124,0,.18),rgba(19,34,49,.96));border:1px solid rgba(255,255,255,.08)}
+.news-highlight h3{font-size:1.35rem;line-height:1.2;margin-bottom:10px}
+.news-highlight p{color:#e8eef2}
+.news-highlight .section-chip{margin-bottom:14px}
+.news-side{display:grid;gap:12px}
+.news-side .facebook-panel{padding:20px}
+.news-side strong{display:block;color:#fff;margin-bottom:8px}
+.news-card-source{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;background:rgba(123,200,164,.08);border:1px solid rgba(123,200,164,.2);color:#eaf8f1;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+.news-feed-card{position:relative;overflow:hidden}
+.news-feed-card::after{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,#f57c00,#ffb34d)}
+.news-feed-card h3{padding-left:10px}
+.news-feed-card p{padding-left:10px}
+.news-feed-card .facebook-feed-meta,.news-feed-card .facebook-feed-link{margin-left:10px}
 .steps-grid,.profit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:4rem}
 
 .feature-card,.info-card,.testimonial,.tip-card,.campaign-card,.contact-card,.compare-section,.cta-section,.seo-block,.article-card,.facebook-panel,.trust-card,.journey-card,.proof-card,.step-card,.profit-card,.video-panel{
@@ -1188,10 +1202,29 @@ footer{
   </section>
 
   <section id="facebook-feed" class="seo-block">
-    <p class="section-label">Publicacoes</p>
-    <h2 class="section-title">Ultimas publicacoes trazidas automaticamente da pagina</h2>
-    <p class="section-sub" style="margin-bottom:18px">Esta secao fica pronta para mostrar as publicacoes mais recentes da pagina de Facebook assim que a integracao API estiver ativa no repositorio.</p>
-    <p class="facebook-status" id="facebookFeedStatus">A carregar publicacoes...</p>
+    <p class="section-label">Noticias TVDE</p>
+    <h2 class="section-title">Atualizacao automatica com noticias do dia anterior para motoristas</h2>
+    <p class="section-sub" style="margin-bottom:18px">Aqui entram noticias e temas recentes sobre TVDE, Uber, Bolt, regulacao, mercado e trabalho no terreno. O objetivo e dar ao motorista um ponto rapido de leitura todos os dias.</p>
+    <div class="news-hero">
+      <div class="news-highlight" id="newsHighlight">
+        <span class="section-chip">A preparar destaque diario</span>
+        <h3>O destaque do dia vai aparecer aqui automaticamente</h3>
+        <p>Assim que o ficheiro de noticias for atualizado, este bloco mostra logo a noticia mais relevante para abrir com um clique.</p>
+        <div class="cta-actions">
+          <a href="https://news.google.com/search?q=TVDE%20Portugal&hl=pt-PT&gl=PT&ceid=PT:pt-150" target="_blank" class="btn-hero btn-primary">Ver noticias TVDE</a>
+        </div>
+      </div>
+      <div class="news-side">
+        <div class="facebook-panel">
+          <strong>Leitura rapida para o motorista</strong>
+          <p>Se fores entrar em turno, este bloco ajuda-te a perceber o que mexeu no mercado antes de arrancares: regras, apps, operadores e contexto do dia.</p>
+        </div>
+        <div class="facebook-panel">
+          <strong>Atualizacao prevista</strong>
+          <p class="facebook-status" id="facebookFeedStatus">A carregar noticias do dia anterior...</p>
+        </div>
+      </div>
+    </div>
     <div class="facebook-feed-grid" id="facebookFeedGrid"></div>
   </section>
 
@@ -1277,26 +1310,42 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTip()})
 async function loadFacebookFeed(){
   var status=document.getElementById('facebookFeedStatus');
   var grid=document.getElementById('facebookFeedGrid');
-  if(!status||!grid)return;
+  var highlight=document.getElementById('newsHighlight');
+  if(!status||!grid||!highlight)return;
   try{
-    var response=await fetch('facebook-feed.json',{cache:'no-store'});
+    var response=await fetch('tvde-news.json',{cache:'no-store'});
     if(!response.ok)throw new Error('feed-unavailable');
     var payload=await response.json();
     var posts=Array.isArray(payload.posts)?payload.posts:[];
+    var featured=payload.featured||posts[0]||null;
     if(!posts.length){
-      status.textContent='Ainda nao existem publicacoes sincronizadas. Assim que a ligacao API estiver ativa, as ultimas publicacoes aparecem aqui automaticamente.';
+      status.textContent='Ainda nao encontrei noticias sincronizadas. Assim que a automatizacao correr, as noticias do dia anterior aparecem aqui.';
       return;
     }
-    status.textContent=payload.updated_at?'Atualizado automaticamente em '+payload.updated_at+'.':'Ultimas publicacoes sincronizadas automaticamente.';
+    status.textContent=payload.updated_at?'Atualizado automaticamente em '+payload.updated_at+'.':'Noticias sincronizadas automaticamente.';
+    if(payload.window_label){
+      status.textContent+=' Janela: '+payload.window_label+'.';
+    }
+    if(featured){
+      highlight.innerHTML=
+        '<span class="section-chip">Destaque automatico</span>'+
+        '<h3>'+escapeHtml(featured.title||'Noticia em destaque')+'</h3>'+
+        '<p>'+(featured.summary?escapeHtml(featured.summary):'Abre esta noticia para veres rapidamente o tema mais relevante encontrado para motoristas TVDE.')+'</p>'+
+        '<div class="cta-actions">'+
+          '<a href="'+escapeAttribute(featured.url||'https://news.google.com/search?q=TVDE%20Portugal&hl=pt-PT&gl=PT&ceid=PT:pt-150')+'" target="_blank" class="btn-hero btn-primary">Abrir noticia em destaque</a>'+
+          '<a href="https://news.google.com/search?q=TVDE%20Portugal&hl=pt-PT&gl=PT&ceid=PT:pt-150" target="_blank" class="btn-hero btn-secondary">Ver mais noticias TVDE</a>'+
+        '</div>';
+    }
     grid.innerHTML=posts.map(function(post){
-      var title=post.title||'Publicacao Facebook';
-      var message=post.message||'Sem texto disponivel nesta publicacao.';
-      var date=post.created_time||'Data indisponivel';
-      var permalink=post.permalink_url||'https://www.facebook.com/profile.php?id=61583011651853';
-      return '<article class="facebook-panel facebook-feed-card"><h3>'+escapeHtml(title)+'</h3><p>'+escapeHtml(message)+'</p><div class="facebook-feed-meta"><span>'+escapeHtml(date)+'</span><span>Facebook</span></div><a class="facebook-feed-link" href="'+escapeAttribute(permalink)+'" target="_blank">Ver publicacao</a></article>';
+      var title=post.title||'Noticia TVDE';
+      var message=post.summary||'Sem resumo disponivel nesta noticia.';
+      var date=post.published_at||'Data indisponivel';
+      var source=post.source||'TVDE';
+      var permalink=post.url||'https://news.google.com/search?q=TVDE%20Portugal&hl=pt-PT&gl=PT&ceid=PT:pt-150';
+      return '<article class="facebook-panel facebook-feed-card news-feed-card"><span class="news-card-source">'+escapeHtml(source)+'</span><h3>'+escapeHtml(title)+'</h3><p>'+escapeHtml(message)+'</p><div class="facebook-feed-meta"><span>'+escapeHtml(date)+'</span><span>'+escapeHtml(post.topic||'mercado TVDE')+'</span></div><a class="facebook-feed-link" href="'+escapeAttribute(permalink)+'" target="_blank">Abrir noticia</a></article>';
     }).join('');
   }catch(error){
-    status.textContent='Nao foi possivel carregar as publicacoes automaticas neste momento. O link direto para o Facebook continua disponivel acima.';
+    status.textContent='Nao foi possivel carregar as noticias automaticas neste momento. Usa o botao acima para abrir a pesquisa TVDE diretamente.';
   }
 }
 
